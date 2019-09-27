@@ -19,8 +19,9 @@ public class Controller {
 
     // adjust all clocks according to the input time (beijing time)
     public void adjustClocks(int time){
+        this.conClock.setTime(time);
         for(Clock c : cityClocks.getClocks()){
-            c.setTime(time - conClock.getOffset() + c.getOffset());
+            c.setTime((time - conClock.getOffset() + c.getOffset() + 24)%24);
         }
     }
 }
